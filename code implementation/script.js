@@ -1,19 +1,32 @@
 // No. 1 Mendeteksi palindrom
 function deteksiPalindrom(word) {
-    const palindrom = word.split('').reverse().join('')
-    if (word === palindrom) {
+    if (typeof(word) !== 'string') {
+        console.log('tolong masukkan string');
+        return
+    }
+    // menjadikan huruf kecil
+    const cleanedWord = word.toLowerCase()
+    // cek palindrom 
+    const palindrom = cleanedWord.split('').reverse().join('')
+    if (cleanedWord === palindrom) {
         console.log('Palindrom');
     }else{
         console.log('Bukan Palindrom');
     }
 }
 
-deteksiPalindrom('malam');
+deteksiPalindrom('Malam');
 
 // No. 2 Membalikkan kata
 function reverseWord(kalimat) {
-    const reverse = kalimat.split(' ').reverse().join(' ');
-    console.log(reverse);
+    // Memeriksa apakah input adalah string
+    if (typeof(kalimat) === 'string') {
+        // Memisahkan kata-kata dalam kalimat, membalikkan urutannya, dan menggabungkannya kembali
+        const reverse = kalimat.split(' ').reverse().join(' ');
+        console.log(reverse);
+    } else {
+        console.log('Yang anda masukkan bukan string');
+    }
 }
 
 reverseWord('Saya Belajar Javascript');
@@ -56,15 +69,21 @@ function fazzFood(harga, voucher, jarak, pajak) {
 
 fazzFood(75000, 'FAZZFOOD50', 5, true);
 
-// No. 4 me-urutkan angka
-function divideAndSort(int) {
-
-    const sort = int.toString().split('0')
+// No. 4 Memisah dan me-urutkan angka
+function divideAndSort(number) {
+    if (typeof number !== 'number') {
+        console.log('Input harus berupa angka');
+        return;
+    }
+    const sortResult = number
+    .toString()
+    .split('0')
     .map((element) => {
-        const el = element.split('').sort().join('')
-        return parseInt(el);
-    }).join('')
-    console.log(sort);
+        const sortEl = element.split('').sort().join('')
+        return parseInt(sortEl);
+    })
+    .join('')
+    console.log(sortResult);
 }
 
 divideAndSort(5956560159466056);
